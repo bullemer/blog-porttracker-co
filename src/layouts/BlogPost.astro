@@ -53,6 +53,32 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				font-style: italic;
 			}
 		</style>
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": "Article",
+				"headline": title,
+				"description": description,
+				"datePublished": pubDate.toISOString(),
+				"dateModified": updatedDate ? updatedDate.toISOString() : pubDate.toISOString(),
+				"author": {
+					"@type": "Organization",
+					"name": "Navisense",
+					"url": "https://navisense.de"
+				},
+				"publisher": {
+					"@type": "Organization",
+					"name": "PortTracker Blog",
+					"url": "https://blog.porttracker.co"
+				},
+				"mainEntityOfPage": {
+					"@type": "WebPage",
+					"@id": Astro.url.href
+				},
+				...(heroImage ? { "image": new URL(heroImage.src, Astro.url).href } : {})
+			})}
+		/>
 	</head>
 
 	<body>
