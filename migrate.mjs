@@ -7,8 +7,14 @@ import TurndownService from 'turndown';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const WP_USER = process.env.WP_USER;
+const WP_PASS = process.env.WP_PASS;
+if (!WP_USER || !WP_PASS) {
+  console.error('Set WP_USER and WP_PASS environment variables');
+  process.exit(1);
+}
 const AUTH_HEADER = {
-  Authorization: `Basic ${Buffer.from('HeTzNeR4SeCuRiTy:UGSasjiA2cyfsGuB').toString('base64')}`
+  Authorization: `Basic ${Buffer.from(`${WP_USER}:${WP_PASS}`).toString('base64')}`
 };
 
 const API_URL = 'https://blog.porttracker.co/wp-json/wp/v2/posts?_embed&per_page=100';
