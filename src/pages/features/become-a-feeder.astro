@@ -1,0 +1,177 @@
+---
+import LandingPage from '../../layouts/LandingPage.astro';
+---
+<LandingPage 
+  title="Become an AIS Data Feeder" 
+  description="Share your AIS data with PortTracker and become part of a growing maritime intelligence network. Two simple ways to contribute — pick the one that suits you best."
+>
+  <div class="feature-block">
+    <div class="feature-text">
+      <h2>Why Become a Port Feeder?</h2>
+      <p>PortTracker relies on a decentralized network of AIS receivers to deliver real-time vessel tracking for ports around the world. By sharing your AIS data, you help expand global coverage and gain access to premium feeder benefits — including API access, the full vessel database, and discounted usage of TrustedDocks and new-ships.com.</p>
+    </div>
+    <div class="feature-image">📡</div>
+  </div>
+
+  <div class="methods-section">
+    <h2 class="methods-title">Two Ways to Feed Data</h2>
+    <p class="methods-subtitle">Choose the method that fits your setup. Both are production-proven and actively used by our feeder community.</p>
+
+    <div class="methods-grid">
+      <div class="method-card preferred">
+        <div class="method-badge">Recommended</div>
+        <div class="method-icon">📱</div>
+        <h3>The Smart Way — AIS Catcher App</h3>
+        <p>Grab an old Android phone or a Raspberry Pi, connect an inexpensive SDR stick, and install our <strong>AIS Catcher Feeder APK</strong>. The app handles everything automatically:</p>
+        <ul>
+          <li><strong>Plug & Play</strong> — Install the APK, pair your SDR receiver, and you're live in minutes</li>
+          <li><strong>Raspberry Pi</strong> — Alternatively, install Lineage OS on a Pi for a headless, always-on station</li>
+          <li><strong>MQTT Protocol</strong> — Data is transmitted securely via MQTT with TLS encryption</li>
+          <li><strong>Buffered & Reliable</strong> — Built-in message buffering protects against signal loss and network outages</li>
+          <li><strong>Low Power</strong> — Runs 24/7 on minimal hardware with virtually no maintenance</li>
+        </ul>
+        <a href="https://porttracker.co" class="method-cta preferred-cta">Get the Feeder App</a>
+      </div>
+
+      <div class="method-card">
+        <div class="method-icon">🖥️</div>
+        <h3>The Classic Way — TCP / UDP</h3>
+        <p>Already running an AIS receiver with a Raspberry Pi, RTL-SDR dongle, or dedicated AIS station? Send raw NMEA sentences directly to our ingestion server:</p>
+        <ul>
+          <li><strong>TCP or UDP</strong> — Connect to our AIS import server using your preferred transport protocol</li>
+          <li><strong>Your Port = Your ID</strong> — Use your TrustedDocks or PortTracker user ID as the destination port number</li>
+          <li><strong>Any Hardware</strong> — Works with any device that can output NMEA over a network socket</li>
+          <li><strong>No Special Software</strong> — Standard tools like <code>netcat</code>, <code>socat</code>, or <code>rtl_ais</code> piping work perfectly</li>
+        </ul>
+        <a href="https://porttracker.co" class="method-cta">Start Feeding via TCP/UDP</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-block reverse">
+    <div class="feature-text">
+      <h2>What You Get as a Feeder</h2>
+      <p>As a Port Feeder, your data powers the PortTracker network. In return, you unlock premium features at no cost — including full API access (REST and Live), vessel database queries, and discounted rates on TrustedDocks and new-ships.com. Your contribution makes the entire maritime community smarter.</p>
+    </div>
+    <div class="feature-image">🎁</div>
+  </div>
+</LandingPage>
+
+<style>
+  .methods-section {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .methods-title {
+    font-size: 2.2rem;
+    color: #0f172a;
+    margin-bottom: 0.75rem;
+  }
+  .methods-subtitle {
+    font-size: 1.15rem;
+    color: #475569;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+  .methods-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .method-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: left;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .method-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  }
+  .method-card.preferred {
+    border: 2px solid #2563eb;
+    background: linear-gradient(180deg, #eff6ff 0%, #f8fafc 100%);
+  }
+  .method-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .method-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  .method-card h3 {
+    font-size: 1.4rem;
+    color: #0f172a;
+    margin-bottom: 1rem;
+  }
+  .method-card p {
+    font-size: 1rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+  .method-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+  .method-card ul li {
+    padding: 0.4rem 0;
+    color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .method-card ul li::before {
+    content: '✓ ';
+    color: #2563eb;
+    font-weight: bold;
+  }
+  .method-card code {
+    background: #e2e8f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+  }
+  .method-cta {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #cbd5e1;
+    color: #0f172a;
+    transition: all 0.2s ease;
+  }
+  .method-cta:hover {
+    background: #f1f5f9;
+  }
+  .method-cta.preferred-cta {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    border: none;
+  }
+  .method-cta.preferred-cta:hover {
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    transform: translateY(-2px);
+  }
+  @media (max-width: 768px) {
+    .methods-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
