@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 
-const { title, description } = Astro.props;
+const { title, description, ctaUrl = 'https://porttracker.co', ctaLabel = 'Try PortTracker Live' } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -107,7 +107,7 @@ const { title, description } = Astro.props;
 			<div class="hero">
 				<h1>{title}</h1>
 				<p>{description}</p>
-				<a href="https://app.porttracker.co" class="cta-button">Try PortTracker Live</a>
+				<a href={ctaUrl} class="cta-button">{ctaLabel}</a>
 			</div>
             <div class="content-section">
                 <slot />
