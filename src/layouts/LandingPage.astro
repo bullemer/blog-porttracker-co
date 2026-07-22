@@ -1,0 +1,118 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			main {
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 1rem;
+			}
+			.hero {
+				text-align: center;
+				padding: 6rem 1rem;
+				background: linear-gradient(135deg, rgba(11, 58, 66, 0.95), rgba(11, 58, 66, 0.85));
+				color: white;
+				border-radius: 12px;
+				margin: 2rem 0 4rem;
+				box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+			}
+			.hero h1 {
+				color: white;
+				font-size: 3.5rem;
+				margin-bottom: 1.5rem;
+				line-height: 1.2;
+			}
+			.hero p {
+				font-size: 1.35rem;
+				color: rgba(255, 255, 255, 0.9);
+				max-width: 800px;
+				margin: 0 auto 2.5rem;
+				line-height: 1.6;
+			}
+			.cta-button {
+				display: inline-block;
+				background: linear-gradient(135deg, #2563eb, #1d4ed8);
+				color: white;
+				padding: 1rem 2.5rem;
+				border-radius: 8px;
+				font-size: 1.2rem;
+				font-weight: 600;
+				text-decoration: none;
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+			.cta-button:hover {
+				transform: translateY(-3px);
+				box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+			}
+            .content-section {
+                padding: 4rem 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: 5rem;
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+            .feature-block {
+                display: flex;
+                gap: 4rem;
+                align-items: center;
+            }
+            .feature-block.reverse {
+                flex-direction: row-reverse;
+            }
+            .feature-text {
+                flex: 1;
+            }
+            .feature-text h2 {
+                font-size: 2.2rem;
+                color: #0f172a;
+                margin-bottom: 1rem;
+            }
+            .feature-text p {
+                font-size: 1.15rem;
+                color: #475569;
+                line-height: 1.7;
+            }
+            .feature-image {
+                flex: 1;
+                background: #f8fafc;
+                border: 1px solid #e2e8f0;
+                border-radius: 16px;
+                min-height: 350px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 6rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            }
+			@media (max-width: 768px) {
+                .hero { padding: 4rem 1rem; }
+				.hero h1 { font-size: 2.5rem; }
+                .feature-block, .feature-block.reverse { flex-direction: column; gap: 2rem; }
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="hero">
+				<h1>{title}</h1>
+				<p>{description}</p>
+				<a href="https://app.porttracker.co" class="cta-button">Try PortTracker Live</a>
+			</div>
+            <div class="content-section">
+                <slot />
+            </div>
+		</main>
+		<Footer />
+	</body>
+</html>
