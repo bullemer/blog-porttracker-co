@@ -1,10 +1,16 @@
 ---
+import { Image } from 'astro:assets';
 import LandingPage from '../../layouts/LandingPage.astro';
+import liveViewScreenshot from '../../assets/features/live-view-screenshot.png';
 ---
 <LandingPage 
   title="Live Vessel Tracking View" 
   description="Get a comprehensive, real-time overview of all port traffic. Track vessels, monitor delays, and manage operations from a single pane of glass."
 >
+  <div class="hero-screenshot">
+    <Image src={liveViewScreenshot} alt="PortTracker Live Map showing real-time vessel positions in Hamburg port with AIS tracking overlay" width={1200} quality={85} />
+  </div>
+
   <div class="feature-block">
     <div class="feature-text">
       <h2>Total Situational Awareness</h2>
@@ -20,3 +26,19 @@ import LandingPage from '../../layouts/LandingPage.astro';
     <div class="feature-image">🚢</div>
   </div>
 </LandingPage>
+
+<style>
+  .hero-screenshot {
+    margin: -2rem auto 3rem;
+    max-width: 1100px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    border: 1px solid #e2e8f0;
+  }
+  .hero-screenshot img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
