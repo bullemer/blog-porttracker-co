@@ -1,10 +1,17 @@
 ---
+import { Image } from 'astro:assets';
 import LandingPage from '../../layouts/LandingPage.astro';
+import tugScheduleScreenshot from '../../assets/features/tug-schedule-screenshot.png';
+import tugMathprogScreenshot from '../../assets/features/tug-mathprog-screenshot.png';
 ---
 <LandingPage 
   title="Intelligent Tugboat Scheduling" 
   description="Optimize your fleet operations. Reduce idle time, cut fuel costs, and ensure perfect timing with our predictive tugboat scheduling algorithms."
 >
+  <div class="hero-screenshot">
+    <Image src={tugScheduleScreenshot} alt="PortTracker Tug Plan showing LP-optimized tugboat scheduling with Gantt chart timeline for Hamburg port fleet" width={1200} quality={85} />
+  </div>
+
   <div class="feature-block">
     <div class="feature-text">
       <h2>Predictive Job Allocation</h2>
@@ -12,7 +19,18 @@ import LandingPage from '../../layouts/LandingPage.astro';
     </div>
     <div class="feature-image">🚜</div>
   </div>
+
   <div class="feature-block reverse">
+    <div class="feature-text">
+      <h2>Mathematical Optimization Under the Hood</h2>
+      <p>Our scheduling engine uses GNU MathProg to solve a real linear program — factoring in bollard pull demand, tug substitution, time windows, travel between berths, and duty limits. You can even inspect and edit the optimization model live.</p>
+    </div>
+    <div class="screenshot-inline">
+      <Image src={tugMathprogScreenshot} alt="GNU MathProg optimization model used for tugboat scheduling in PortTracker" width={900} quality={85} />
+    </div>
+  </div>
+
+  <div class="feature-block">
     <div class="feature-text">
       <h2>Live Fleet Tracking</h2>
       <p>Keep an eye on your entire tug fleet in real-time. Know exactly which tugs are currently engaged, which are on standby, and view their precise operational status and speeds directly on the live map.</p>
@@ -20,3 +38,31 @@ import LandingPage from '../../layouts/LandingPage.astro';
     <div class="feature-image">⚓</div>
   </div>
 </LandingPage>
+
+<style>
+  .hero-screenshot {
+    margin: -2rem auto 3rem;
+    max-width: 1100px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    border: 1px solid #e2e8f0;
+  }
+  .hero-screenshot img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .screenshot-inline {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid #e2e8f0;
+  }
+  .screenshot-inline img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
