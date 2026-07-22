@@ -1,10 +1,16 @@
 ---
+import { Image } from 'astro:assets';
 import LandingPage from '../../layouts/LandingPage.astro';
+import live3dScreenshot from '../../assets/features/live3d-screenshot.jpg';
 ---
 <LandingPage 
   title="Immersive 3D Live Tracking" 
   description="Experience port traffic like never before. Dive into a cinematic, real-time 3D environment powered by actual port photogrammetry and live telemetry."
 >
+  <div class="hero-screenshot">
+    <Image src={live3dScreenshot} alt="PortTracker 3D Live view of Hamburg port showing real-time vessel tracking with photorealistic 3D terrain" width={1200} quality={85} />
+  </div>
+
   <div class="feature-block">
     <div class="feature-text">
       <h2>Cinematic Drone Autopilot</h2>
@@ -20,3 +26,19 @@ import LandingPage from '../../layouts/LandingPage.astro';
     <div class="feature-image">🌅</div>
   </div>
 </LandingPage>
+
+<style>
+  .hero-screenshot {
+    margin: -2rem auto 3rem;
+    max-width: 1100px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    border: 1px solid #e2e8f0;
+  }
+  .hero-screenshot img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
